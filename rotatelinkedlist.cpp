@@ -1,3 +1,4 @@
+
 /**
  * Definition for singly-linked list.
  * class Node {
@@ -21,14 +22,15 @@ Node *rotate(Node *head, int k) {
             cur = cur->next;
         
         // go till that node
-        cur->next = head;
-        k = k % len; 
-        k = len - k;
-        while (k--) cur = cur->next;
+        cur->next = head;  // last node is pointing towards head
+        k = k % len; // if k>=len
+        k = len - k;  // coz we need to find len-kth node from the starting
+
+        while (k--) cur = cur->next;  // now moving this from head since curr is pointing to the head
         
         // make the node head and break connection 
-        head = cur->next;
-        cur->next = NULL;
+        head = cur->next; // curr->next will be the new head
+        cur->next = NULL; // point the curr->next to the null and break the connection
         
         
         return head; 
